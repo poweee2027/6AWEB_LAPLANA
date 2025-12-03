@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'electric-cyan': {
+                            DEFAULT: '#00BCD4',
+                            'dark': '#00838F',
+                            'light': '#E0F7FA',
+                            'text': '#00E5FF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex items-center justify-center p-4">
+
+    <div class="text-center max-w-lg mx-auto bg-gray-800 p-8 sm:p-12 rounded-2xl shadow-2xl border-t-4 border-electric-cyan-DEFAULT">
+
+        <h1 class="text-8xl sm:text-9xl font-extrabold text-electric-cyan-text mb-4 tracking-tight" style="text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);">
+            404
+        </h1>
+
+        <h2 class="text-3xl sm:text-4xl font-semibold text-gray-100 mb-4">
+            Oops! This link took a detour.
+        </h2>
+
+        <p class="text-lg text-gray-400 mb-8">
+            Looks like the page you were looking for decided to take a coffee break. It happens!
+        </p>
+
+        <a href="/" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-gray-900 bg-electric-cyan-DEFAULT hover:bg-electric-cyan-dark transition duration-300 transform hover:scale-105">
+            Take Me Back Home
+        </a>
+
+        <p class="mt-6 text-sm text-gray-500">
+            (P.S. We won't tell anyone you got lost.)
+        </p>
+    </div>
+
+</body>
+</html>
