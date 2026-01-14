@@ -1,0 +1,113 @@
+<div class="container">
+  <h1>Angular Pipes Demo</h1>
+
+  <div class="card">
+    <p><strong>Raw Date:</strong> {{ presentDate }}</p>
+    <small>Just displays the raw JavaScript Date object</small>
+
+    <p><strong>Default Date Pipe:</strong> {{ presentDate | date }}</p>
+    <small>Formats the date using Angular's default locale format</small>
+  </div>
+
+  <div class="card">
+    <h3>Date Formats</h3>
+    <p>Short date: {{ presentDate | date:'shortDate' }}</p>
+    <small>Short format (e.g., 1/14/26)</small>
+
+    <p>Full date: {{ presentDate | date:'fullDate' }}</p>
+    <small>Full format (e.g., Tuesday, January 14, 2026)</small>
+
+    <p>Custom format: {{ presentDate | date:'M/dd/yyyy' }}</p>
+    <small>Custom month/day/year format</small>
+
+    <p>Time (hours & minutes): {{ presentDate | date:'h:mm' }}</p>
+    <small>Shows only hour and minute</small>
+  </div>
+
+  <div class="card">
+    <h3>Text Transform</h3>
+    <p>Uppercase: {{ presentDate | date:'fullDate' | uppercase }}</p>
+    <small>Converts formatted date to uppercase letters</small>
+
+    <p>Lowercase: {{ presentDate | date:'medium' | lowercase }}</p>
+    <small>Converts formatted date to lowercase letters</small>
+  </div>
+
+  <div class="card">
+    <h3>Async Pipe</h3>
+    <p>Live time: {{ time$ | async | date:'mediumTime' }}</p>
+    <small>Subscribes to observable (time$) and formats it as time</small>
+  </div>
+
+  <div class="card">
+    <h3>Currency Pipe</h3>
+    <p>Default: {{ price | currency:'':true }}</p>
+    <small>Formats number as currency without a symbol</small>
+
+    <p>INR: {{ price | currency:'INR' }}</p>
+    <small>Formats number as Indian Rupee currency</small>
+  </div>
+
+  <div class="card">
+    <h3>Slice Pipe (Fruits)</h3>
+    <p>Start index (2): {{ Fruits | slice:2 }}</p>
+    <small>Returns array starting from index 2 to end</small>
+
+    <p>Start–end (1–4): {{ Fruits | slice:1:4 }}</p>
+    <small>Returns array from index 1 up to (not including) 4</small>
+
+    <p>Negative index (-2): {{ Fruits | slice:-2 }}</p>
+    <small>Returns last 2 elements of array</small>
+
+    <p>Negative range (-4 to -2): {{ Fruits | slice:-4:-2 }}</p>
+    <small>Returns array elements from -4 to -2 index</small>
+  </div>
+
+  <div class="card">
+    <h3>Number Pipe</h3>
+    <p>Format 3.1: {{ decimalNum1 | number:'3.1' }}</p>
+    <small>Min 3 integer digits, 1 decimal</small>
+
+    <p>Format 2.1–4: {{ decimalNum1 | number:'2.1-4' }}</p>
+    <small>Min 2 integer digits, 1–4 decimals</small>
+  </div>
+
+  <div class="card">
+    <h3>Percent Pipe</h3>
+    <p>Raw value: {{ completionRate }}</p>
+    <small>Shows raw numeric value</small>
+
+    <p>Percent (default): {{ completionRate | percent }}</p>
+    <small>Converts number to percentage (default format)</small>
+
+    <p>Percent (1 decimal): {{ completionRate | percent:'1.1-1' }}</p>
+    <small>Percentage with 1 decimal</small>
+
+    <p>Percent (2 decimals): {{ completionRate | percent:'1.2-2' }}</p>
+    <small>Percentage with 2 decimals</small>
+  </div>
+
+  <div class="card">
+    <h3>Title Case Pipe</h3>
+    <p>Original: {{ titleText }}</p>
+    <small>Shows raw string</small>
+
+    <p>Title case: {{ titleText | titlecase }}</p>
+    <small>Capitalizes first letter of each word</small>
+  </div>
+
+  <div class="card">
+    <h3>Json Pipe</h3>
+    <pre>{{ user | json }}</pre>
+    <small>Converts object into JSON string for display</small>
+  </div>
+
+  <div class="card">
+    <h3>Key Value Pipe</h3>
+    <div *ngFor="let item of user | keyvalue">
+      {{ item.key }} : {{ item.value }}
+    </div>
+    <small>Converts object into array of key-value pairs for iteration</small>
+  </div>
+
+</div>
