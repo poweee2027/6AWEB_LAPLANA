@@ -1,0 +1,18 @@
+<nav>
+  <div class="nav-content">
+    <div class="logo">
+      <a routerLink="/">Community Help Desk</a>
+    </div>
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" >Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active-link">About</a></li>
+      <li><a routerLink="/services" routerLinkActive="active-link">Services</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- wrap the router content -->
+<div class="page-content">
+  <router-outlet></router-outlet>
+</div>

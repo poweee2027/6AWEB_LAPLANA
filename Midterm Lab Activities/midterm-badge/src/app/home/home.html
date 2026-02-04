@@ -1,0 +1,24 @@
+<main>
+  <div class="camera-lens"></div>
+
+  <div class="indicator-lights">
+    <span class="red"></span><span class="yellow"></span><span class="green"></span>
+  </div>
+
+  <div class="pokedex-screen">
+    <h1>Home</h1>
+
+    <div class="welcome-box">
+      <h2>Welcome!</h2>
+      <p>This portal pulls remote records and shares them across pages.</p>
+    </div>
+
+    <h2>Latest Updates</h2>
+    <ul>
+      <li *ngFor="let post of httpposts | slice:-5">
+        <strong>{{post.title | uppercase}}</strong>
+        <span>{{post.body}}</span>
+      </li>
+    </ul>
+  </div>
+</main>

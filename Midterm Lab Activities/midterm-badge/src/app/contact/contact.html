@@ -1,0 +1,45 @@
+<main>
+  <div class="camera-lens"></div>
+  <div class="indicator-lights">
+    <span class="red"></span><span class="yellow"></span><span class="green"></span>
+  </div>
+
+  <div class="pokedex-screen">
+    <header>
+      <h1>Trainer Registration</h1>
+    </header>
+
+    <div class="split-display">
+      <section class="form-side">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="input-group">
+            <label>NAME</label>
+            <input type="text" formControlName="name" placeholder="Trainer Name" />
+          </div>
+
+          <div class="input-group">
+            <label>EMAIL</label>
+            <input type="email" formControlName="email" placeholder="trainer@pallet.town" />
+          </div>
+
+          <div class="input-group">
+            <label>MESSAGE</label>
+            <textarea formControlName="message" placeholder="Your journey details..."></textarea>
+          </div>
+
+          <button type="submit" [disabled]="!contactForm.valid">SEND DATA</button>
+        </form>
+      </section>
+
+      <section class="preview-side">
+        <div class="scan-header">SCANNING DATA...</div>
+        <div class="preview-box">
+          <p><strong>TRAINER:</strong> {{ contactForm.value.name | uppercase }}</p>
+          <p><strong>ID:</strong> {{ contactForm.value.email }}</p>
+          <hr class="dot-line">
+          <p class="msg-preview"><strong>LOG:</strong> {{ contactForm.value.message }}</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>

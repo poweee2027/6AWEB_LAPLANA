@@ -1,0 +1,32 @@
+<main>
+  <div class="camera-lens"></div>
+  <div class="indicator-lights">
+    <span class="red"></span><span class="yellow"></span><span class="green"></span>
+  </div>
+
+  <div class="pokedex-screen">
+    <div class="screen-header">
+      <h1>System Info</h1>
+      <div class="battery-icon"></div>
+    </div>
+
+    <div class="data-content">
+      <h2 class="glitch-text">{{title | uppercase}}</h2>
+
+      <p class="terminal-text">
+        > This is a sample Angular 21 SPA.<br>
+        > Modules Loaded: Routing, Shared Services, Observables, Pipes.
+      </p>
+
+      <hr class="holo-line">
+
+      <div class="system-footer">
+        <span class="blink">●</span>
+        <span class="label">SERVER TIME:</span>
+        <span class="time">{{ presentDate | date:'fullDate' | uppercase }}</span>
+      </div>
+
+      <hr class="holo-line">
+    </div>
+  </div>
+</main>
