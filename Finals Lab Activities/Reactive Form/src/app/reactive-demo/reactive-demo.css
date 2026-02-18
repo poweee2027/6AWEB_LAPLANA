@@ -1,0 +1,127 @@
+/* Reset basic box sizing so padding doesn't break layout */
+* {
+  box-sizing: border-box;
+}
+
+/* 1. Center the form on the screen */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f9; /* Light grey background */
+  padding: 20px;
+}
+
+/* 2. The White Card */
+.simple-card {
+  background: white;
+  width: 100%;
+  max-width: 400px; /* Limits width so it looks good */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* 3. Form Fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+  font-size: 14px;
+}
+
+/* Inputs, Selects, and Textareas */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff; /* Ensure white background */
+}
+
+/* Focus effect */
+input:focus, select:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* 4. Radio Buttons (Standard Layout) */
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.radio-group input {
+  margin-right: 8px;
+}
+
+/* 5. Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* 6. Helper Messages */
+.error {
+  color: green;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.success-msg {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #c3e6cb;
+}

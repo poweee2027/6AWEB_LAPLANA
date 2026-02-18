@@ -1,0 +1,72 @@
+<div class="center-container">
+  <div class="simple-card">
+
+    <h2>Reactive Form</h2>
+    <p>Clean and functional demonstration.</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" formControlName="username" placeholder="Enter username">
+        <div class="error" *ngIf="isValid('username')">✓ Valid</div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="Enter email">
+        <div class="error" *ngIf="isValid('email')">✓ Valid</div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" formControlName="password" placeholder="Enter password">
+      </div>
+
+      <div class="form-group">
+        <label>Role</label>
+        <select formControlName="role">
+          <option value="" disabled selected>Select Role</option>
+          <option value="admin">Administrator</option>
+          <option value="user">User</option>
+          <option value="guest">Guest</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label>
+            <input type="radio" formControlName="gender" value="Male"> Male
+          </label>
+          <label>
+            <input type="radio" formControlName="gender" value="Female"> Female
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status">
+          <option value="" disabled selected>Select Status</option>
+          <option value="Permanent">Permanent</option>
+          <option value="Probationary">Probationary</option>
+          <option value="Contract">Contract</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Comments</label>
+        <textarea formControlName="comments" rows="3" placeholder="Add notes..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="form.invalid">Submit</button>
+
+    </form>
+
+    <div class="success-msg" *ngIf="isSubmitted">
+      Form Submitted Successfully!
+    </div>
+
+  </div>
+</div>
