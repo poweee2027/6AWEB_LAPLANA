@@ -1,0 +1,75 @@
+<div class="center-container">
+  <div class="pokedex-card">
+
+    <header class="pokedex-header">
+      <div class="camera-lens"></div>
+      <div class="status-lights">
+        <span class="light red"></span>
+        <span class="light yellow"></span>
+        <span class="light green"></span>
+      </div>
+      <h2>TRAINER REGISTRATION</h2>
+    </header>
+
+    <form [formGroup]="trainerForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Trainer Name</label>
+        <input type="text" formControlName="trainerName" placeholder="Enter name...">
+        <div class="valid-badge" *ngIf="isValid('trainerName')">✓ Verified</div>
+      </div>
+
+      <div class="form-group">
+        <label>Trainer Email</label>
+        <input type="email" formControlName="trainerEmail" placeholder="Enter email...">
+      </div>
+
+      <div class="form-group">
+        <label>Starter Pokémon</label>
+        <select formControlName="starterPokemon">
+          <option value="" disabled selected>Select Starter</option>
+          <option value="Bulbasaur">Bulbasaur</option>
+          <option value="Charmander">Charmander</option>
+          <option value="Squirtle">Squirtle</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-row">
+          <label class="radio-item">
+            <input type="radio" formControlName="gender" value="Boy"> <span>Boy</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" formControlName="gender" value="Girl"> <span>Girl</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Home Region</label>
+        <select formControlName="region">
+          <option value="" disabled selected>Select Region</option>
+          <option value="Kanto">Kanto</option>
+          <option value="Johto">Johto</option>
+          <option value="Hoenn">Hoenn</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mission Log</label>
+        <textarea formControlName="trainerNotes" rows="2" placeholder="Gotta catch 'em all!"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="trainerForm.invalid">
+        REGISTER TRAINER
+      </button>
+
+    </form>
+
+    <div class="success-msg" *ngIf="isSubmitted">
+      Registration Complete! Welcome to the League.
+    </div>
+
+  </div>
+</div>

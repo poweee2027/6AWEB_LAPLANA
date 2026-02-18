@@ -1,0 +1,113 @@
+<div class="page-background">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="form-wrapper">
+  <div class="glass-card">
+
+    <header class="form-header">
+      <div class="brand-badge">
+        <span class="icon">✨</span>
+        <span class="text">NEXUS UI</span>
+      </div>
+      <h1>Create Account</h1>
+      <p>Enter your credentials to access the secure terminal.</p>
+    </header>
+
+    <form #myForm="ngForm" (ngSubmit)="myForm.form.valid && onSubmit()" novalidate>
+
+      <div class="input-group">
+        <input type="text" id="username" name="username" [(ngModel)]="username" #u="ngModel" required placeholder=" " autocomplete="off">
+        <label for="username" class="floating-label">Username</label>
+        <div class="focus-line"></div>
+        <div class="validation-icon" *ngIf="u.valid && u.touched">✓</div>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" name="email" [(ngModel)]="email" #e="ngModel" required email placeholder=" " autocomplete="off">
+        <label for="email" class="floating-label">Email Address</label>
+        <div class="focus-line"></div>
+        <div class="validation-icon" *ngIf="e.valid && e.touched">✓</div>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" name="password" [(ngModel)]="password" #p="ngModel" required minlength="6" placeholder=" ">
+        <label for="password" class="floating-label">Password</label>
+        <div class="focus-line"></div>
+        <div class="password-strength" [style.width.%]="password.length * 10"></div>
+      </div>
+
+      <div class="input-group select-group">
+        <label class="static-label">Role</label>
+        <div class="select-wrapper">
+          <select id="role" name="role" [(ngModel)]="role" required>
+            <option value="" disabled selected>Select Access Level</option>
+            <option value="admin">Administrator</option>
+            <option value="user">Standard User</option>
+            <option value="guest">Guest Viewer</option>
+          </select>
+          <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="static-label">Gender</label>
+        <div class="radio-tiles">
+          <label class="tile">
+            <input type="radio" name="gender" value="Male" [(ngModel)]="gender" required>
+            <div class="tile-content">
+              <span class="tile-icon">♂</span>
+              <span>Male</span>
+            </div>
+          </label>
+          <label class="tile">
+            <input type="radio" name="gender" value="Female" [(ngModel)]="gender" required>
+            <div class="tile-content">
+              <span class="tile-icon">♀</span>
+              <span>Female</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="input-group select-group">
+        <label class="static-label">Employment Status</label>
+        <div class="select-wrapper">
+          <select name="status" [(ngModel)]="status" required>
+            <option value="" disabled selected>Select Status</option>
+            <option value="Permanent">Permanent</option>
+            <option value="Probationary">Probationary</option>
+            <option value="Contract">Contractor</option>
+          </select>
+          <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <textarea id="comments" name="comments" [(ngModel)]="comments" rows="3" placeholder=" "></textarea>
+        <label for="comments" class="floating-label">Additional Notes</label>
+        <div class="focus-line"></div>
+      </div>
+
+      <button type="submit" class="mega-button" [disabled]="myForm.invalid">
+        <span class="btn-text">Initialize Account</span>
+        <div class="btn-shine"></div>
+        <svg class="btn-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+    </form>
+
+    <div class="success-overlay" *ngIf="isSubmitted">
+      <div class="success-card">
+        <div class="checkmark-circle">
+          <div class="checkmark draw"></div>
+        </div>
+        <h3>Welcome Aboard!</h3>
+        <p>User <strong>{{ username }}</strong> has been registered.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
