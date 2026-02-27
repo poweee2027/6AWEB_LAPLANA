@@ -1,0 +1,113 @@
+<div class="form-container">
+  <mat-card class="register-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>person_add</mat-icon> User Registration
+      </mat-card-title>
+      <mat-card-subtitle>Fill in the details below to register</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Enter username" formControlName="userName">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error *ngIf="formdata.controls['userName'].hasError('required')">
+            Username is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Enter email" formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="formdata.controls['email'].hasError('required')">Email is required.</mat-error>
+          <mat-error *ngIf="formdata.controls['email'].hasError('email')">Enter a valid email.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Min 8 characters" formControlName="password">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="formdata.controls['password'].hasError('required')">Password is required.</mat-error>
+          <mat-error *ngIf="formdata.controls['password'].hasError('minlength')">Minimum 8 characters.</mat-error>
+        </mat-form-field>
+
+        <div class="field-group">
+          <label class="field-label">Gender</label>
+          <mat-radio-group formControlName="gender" class="radio-group">
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button value="Other">Other</mat-radio-button>
+          </mat-radio-group>
+          <div class="error-text" *ngIf="formdata.controls['gender'].invalid && formdata.controls['gender'].touched">
+            Gender is required.
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="country">
+            <mat-option *ngFor="let c of countries" [value]="c">{{ c }}</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>public</mat-icon>
+          <mat-error *ngIf="formdata.controls['country'].hasError('required')">Country is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Address (Optional)</mat-label>
+          <textarea matInput rows="3" placeholder="Enter your address" formControlName="address"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Birth Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="formdata.controls['birthDate'].hasError('required')">Birth date is required.</mat-error>
+        </mat-form-field>
+
+        <div class="field-group">
+          <label class="field-label">Angular Skill Level: {{ formdata.get('angularSkillLevel')?.value }}</label>
+          <mat-slider [min]="minSkillLevel" [max]="maxSkillLevel" step="1" class="full-width">
+            <input matSliderThumb formControlName="angularSkillLevel">
+          </mat-slider>
+        </div>
+
+        <div class="field-group">
+          <mat-checkbox formControlName="agreeTerms" color="primary">
+            I agree to the Terms and Conditions
+          </mat-checkbox>
+          <div class="error-text" *ngIf="formdata.controls['agreeTerms'].invalid && formdata.controls['agreeTerms'].touched">
+            You must agree to the terms.
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" class="submit-btn">
+          <mat-icon>send</mat-icon> Register
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="result-card" *ngIf="submitted && formdata.valid">
+    <mat-card-header>
+      <mat-card-title><mat-icon>check_circle</mat-icon> Registration Successful!</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table class="result-table">
+        <tr><td><strong>Username:</strong></td><td>{{ userName }}</td></tr>
+        <tr><td><strong>Email:</strong></td><td>{{ email }}</td></tr>
+        <tr><td><strong>Gender:</strong></td><td>{{ gender }}</td></tr>
+        <tr><td><strong>Country:</strong></td><td>{{ country }}</td></tr>
+        <tr><td><strong>Address:</strong></td><td>{{ address || 'N/A' }}</td></tr>
+        <tr><td><strong>Birth Date:</strong></td><td>{{ birthDate | date }}</td></tr>
+        <tr><td><strong>Skill Level:</strong></td><td>{{ angularSkillLevel }} / 10</td></tr>
+        <tr><td><strong>Agreed to Terms:</strong></td><td>{{ agreeTerms ? 'Yes' : 'No' }}</td></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

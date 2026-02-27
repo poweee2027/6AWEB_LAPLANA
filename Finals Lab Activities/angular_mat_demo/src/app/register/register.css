@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f7f8fa;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #1a1a2e;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 32px 0 8px;
+}
+
+/* Card container */
+.form-container {
+  max-width: 480px;
+  margin: 32px auto;
+  background: #ffffff;
+  padding: 36px 40px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Form layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* Radio group */
+.radio-group {
+  margin: 4px 0 8px;
+}
+
+.radio-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.gender-radio-group {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+mat-radio-button {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Slider */
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slider-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+mat-slider {
+  width: 100%;
+}
+
+/* Submit button */
+button[mat-raised-button] {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+/* Results section */
+.result-card {
+  max-width: 480px;
+  margin: 0 auto 40px;
+  border-radius: 12px;
+  border-left: 4px solid #3f51b5;
+  background: #fafafa !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table td {
+  padding: 10px 8px;
+  font-size: 0.92rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+}
+
+.result-table td:first-child {
+  color: #888;
+  font-weight: 500;
+  width: 40%;
+}
+
+/* Error text */
+.error-text {
+  color: #e53935;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+/* Chips */
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-selected {
+  background-color: #3f51b5 !important;
+  color: white !important;
+}
