@@ -1,0 +1,241 @@
+<div class="page-wrapper" [class.dark]="darkMode">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="brand">
+      <span class="mascots">🦆💤</span>
+      <span class="brand-text">Pokémon Trainer Registry</span>
+    </div>
+    <div class="toggle-wrap">
+      <span class="toggle-label">☀️</span>
+      <mat-slide-toggle
+        [(ngModel)]="darkMode"
+        [ngModelOptions]="{standalone:true}"
+        color="accent">
+      </mat-slide-toggle>
+      <span class="toggle-label">🌙</span>
+    </div>
+  </div>
+
+  <div class="page-content">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-mascots">
+        <span class="mascot-left" [class.bounce]="true">🦆</span>
+        <div class="hero-text-center">
+          <h1>Pokémon Trainer Registry</h1>
+          <p>Register your Trainer Card and join the Pokémon League</p>
+        </div>
+        <span class="mascot-right" [class.snore]="true">😴</span>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card-wrap">
+      <mat-stepper [linear]="true" #stepper>
+
+        <!-- ── STEP 1: Trainer Identity ── -->
+        <mat-step [stepControl]="identityForm" label="Trainer Identity">
+          <form [formGroup]="identityForm" class="step-form">
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Trainer Name</mat-label>
+                <input matInput formControlName="trainerName" placeholder="Ash Ketchum">
+                <mat-icon matSuffix
+                  matTooltip="Name that appears on your Trainer Card"
+                  matTooltipPosition="above">badge</mat-icon>
+                <mat-error *ngIf="identityForm.controls['trainerName'].hasError('required')">Trainer name is required.</mat-error>
+                <mat-error *ngIf="identityForm.controls['trainerName'].hasError('minlength')">Minimum 3 characters.</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="trainer@pokemon.com">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="identityForm.controls['email'].hasError('required')">Email is required.</mat-error>
+                <mat-error *ngIf="identityForm.controls['email'].hasError('email')">Invalid email format.</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password" placeholder="e.g. Psyduck1">
+                <button mat-icon-button matSuffix type="button"
+                  (click)="showPassword = !showPassword">
+                  <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-hint>Start with a letter · alphanumeric only · min 8 characters</mat-hint>
+                <mat-error *ngIf="identityForm.controls['password'].hasError('required')">Password is required.</mat-error>
+                <mat-error *ngIf="identityForm.controls['password'].hasError('passwordInvalid')">
+                  Must start with a letter, alphanumeric only, min 8 characters.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="field-group">
+              <span class="field-label">Gender</span>
+              <div class="radio-row">
+                <mat-radio-group formControlName="gender" class="radio-inner">
+                  <mat-radio-button value="Male" color="warn">Male</mat-radio-button>
+                  <mat-radio-button value="Female" color="warn">Female</mat-radio-button>
+                  <mat-radio-button value="Other" color="warn">Other</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="error-text"
+                *ngIf="identityForm.controls['gender'].invalid && identityForm.controls['gender'].touched">
+                Please select a gender.
+              </div>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="dob"
+                  formControlName="birthDate" [max]="maxDate" [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                <mat-datepicker #dob></mat-datepicker>
+                <mat-hint>Must be born in 2006 or earlier</mat-hint>
+                <mat-error *ngIf="identityForm.controls['birthDate'].hasError('required')">Date of birth is required.</mat-error>
+                <mat-error *ngIf="identityForm.controls['birthDate'].hasError('tooYoung')">
+                  You must be born in 2006 or earlier to register.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Phone Number</mat-label>
+                <input matInput formControlName="phone" placeholder="09XXXXXXXXX">
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="identityForm.controls['phone'].hasError('required')">Phone is required.</mat-error>
+                <mat-error *ngIf="identityForm.controls['phone'].hasError('pattern')">Enter a valid 10–11 digit number.</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="step-actions">
+              <button mat-raised-button color="warn" matStepperNext
+                (click)="identityForm.markAllAsTouched()">
+                Next <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+
+          </form>
+        </mat-step>
+
+        <!-- ── STEP 2: Trainer Profile ── -->
+        <mat-step [stepControl]="profileForm" label="Trainer Profile">
+          <form [formGroup]="profileForm" class="step-form">
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Home Region</mat-label>
+                <mat-select formControlName="region">
+                  <mat-option *ngFor="let r of regions" [value]="r">{{ r }}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>map</mat-icon>
+                <mat-error *ngIf="profileForm.controls['region'].hasError('required')">Region is required.</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Trainer Class</mat-label>
+                <mat-select formControlName="trainerClass">
+                  <mat-option *ngFor="let t of trainerClasses" [value]="t">{{ t }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="profileForm.controls['trainerClass'].hasError('required')">Trainer class is required.</mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Starter Type -->
+            <div class="field-group">
+              <span class="field-label">Choose Your Starter Type</span>
+              <div class="type-chips">
+                <div *ngFor="let type of starterTypes"
+                  class="type-chip"
+                  [class.selected]="profileForm.controls['starterType'].value === type.value"
+                  [attr.data-type]="type.value"
+                  (click)="profileForm.controls['starterType'].setValue(type.value)">
+                  <span class="type-emoji">{{ type.icon }}</span>
+                  <span class="type-name">{{ type.label }}</span>
+                </div>
+              </div>
+              <div class="error-text"
+                *ngIf="profileForm.controls['starterType'].invalid && profileForm.controls['starterType'].touched">
+                Please choose a starter type.
+              </div>
+            </div>
+
+            <!-- Gym Badges -->
+            <div class="field-group">
+              <span class="field-label">
+                Gym Badges Collected
+                <span class="badge-pill">{{ selectedBadgeCount }}/8</span>
+              </span>
+              <div class="badge-chips">
+                <div *ngFor="let badge of badges"
+                  class="badge-chip"
+                  [class.selected]="badge.selected"
+                  (click)="toggleBadge(badge)">
+                  <span>{{ badge.icon }}</span>
+                  <span>{{ badge.name }}</span>
+                </div>
+              </div>
+            </div>
+
+            <mat-divider class="divider"></mat-divider>
+
+            <div class="field-group checkbox-group">
+              <mat-checkbox formControlName="agreeTerms" color="warn">
+                I agree to the Pokémon League Terms &amp; Conditions
+              </mat-checkbox>
+              <div class="error-text"
+                *ngIf="profileForm.controls['agreeTerms'].invalid && profileForm.controls['agreeTerms'].touched">
+                You must agree to continue.
+              </div>
+            </div>
+
+            <div class="step-actions space-between">
+              <button mat-stroked-button matStepperPrevious type="button">
+                <mat-icon>arrow_back</mat-icon> Back
+              </button>
+              <button mat-raised-button color="warn" type="button" (click)="onSubmit()">
+                <mat-icon>catching_pokemon</mat-icon> Register
+              </button>
+            </div>
+
+          </form>
+        </mat-step>
+
+      </mat-stepper>
+    </div>
+
+    <!-- Result Card -->
+    <div class="result-wrap" *ngIf="submitted">
+      <div class="result-header">
+        <div class="result-mascots">🦆🎉😴</div>
+        <div class="result-title">Trainer Card Issued!</div>
+        <div class="result-subtitle">Welcome to the Pokémon League, <strong>{{ trainerName }}</strong>!</div>
+      </div>
+      <mat-divider></mat-divider>
+      <table class="result-table">
+        <tr><td class="r-label">Trainer Name</td><td>{{ trainerName }}</td></tr>
+        <tr><td class="r-label">Email</td><td>{{ email }}</td></tr>
+        <tr><td class="r-label">Gender</td><td>{{ gender }}</td></tr>
+        <tr><td class="r-label">Date of Birth</td><td>{{ birthDate | date }}</td></tr>
+        <tr><td class="r-label">Phone</td><td>{{ phone }}</td></tr>
+        <tr><td class="r-label">Home Region</td><td>{{ region }}</td></tr>
+        <tr><td class="r-label">Trainer Class</td><td>{{ trainerClass }}</td></tr>
+        <tr><td class="r-label">Starter Type</td><td>{{ starterType }}</td></tr>
+        <tr><td class="r-label">Badges</td><td>{{ selectedBadgeCount }}/8 — {{ selectedBadgeNames }}</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>

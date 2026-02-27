@@ -1,0 +1,651 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;600;700;800&display=swap');
+
+/* ══════════════════════════════════════════
+   PSYDUCK 🦆 + SNORLAX 😴 THEME
+   Gold/Yellow + Periwinkle Blue + Cream
+══════════════════════════════════════════ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Light Theme ── */
+.page-wrapper {
+  --bg:            #fdf6e3;
+  --bg2:           #fef9ee;
+  --card:          #ffffff;
+  --card-border:   rgba(0,0,0,0.08);
+  --text:          #2d2a1e;
+  --subtext:       #7a7060;
+  --label:         #a09880;
+  --border:        #e8dfc8;
+  --accent:        #e6a817;
+  --accent-dark:   #c8920e;
+  --accent-soft:   #fef3d0;
+  --blue:          #6b7fd4;
+  --blue-soft:     #eef0fb;
+  --chip-bg:       #f7f2e8;
+  --chip-border:   #ddd4bc;
+  --divider:       #ede5d0;
+  --input-bg:      #fffdf7;
+  --shadow:        0 4px 24px rgba(100,80,20,0.10);
+  --shadow-lg:     0 8px 40px rgba(100,80,20,0.14);
+  --error:         #e05c3a;
+
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(230,168,23,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(107,127,212,0.08) 0%, transparent 50%);
+  color: var(--text);
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ── Dark Theme ── */
+.page-wrapper.dark {
+  --bg:            #1a1710;
+  --bg2:           #201d14;
+  --card:          #252015;
+  --card-border:   rgba(255,255,255,0.07);
+  --text:          #f0e8d0;
+  --subtext:       #a09070;
+  --label:         #706050;
+  --border:        #3a3020;
+  --accent:        #f0b830;
+  --accent-dark:   #d4a020;
+  --accent-soft:   #2e280a;
+  --blue:          #8090e0;
+  --blue-soft:     #1a1e35;
+  --chip-bg:       #2a2418;
+  --chip-border:   #3e3525;
+  --divider:       #302820;
+  --input-bg:      #201d14;
+  --shadow:        0 4px 24px rgba(0,0,0,0.4);
+  --shadow-lg:     0 8px 40px rgba(0,0,0,0.5);
+  --error:         #ff7055;
+
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(240,184,48,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(128,144,224,0.06) 0%, transparent 50%);
+}
+
+/* ══════════════════════════════════════════
+   TOP BAR
+══════════════════════════════════════════ */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 58px;
+  background: var(--accent);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  transition: background 0.4s;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mascots {
+  font-size: 1.4rem;
+  letter-spacing: -4px;
+}
+
+.brand-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-label { font-size: 1.1rem; }
+
+/* Force slide-toggle track color */
+::ng-deep .mat-mdc-slide-toggle .mdc-switch__track {
+  background-color: rgba(255,255,255,0.35) !important;
+}
+::ng-deep .mat-mdc-slide-toggle.mat-checked .mdc-switch__track {
+  background-color: rgba(255,255,255,0.6) !important;
+}
+
+/* ══════════════════════════════════════════
+   PAGE CONTENT
+══════════════════════════════════════════ */
+.page-content {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero { margin-bottom: 28px; }
+
+.hero-mascots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.mascot-left {
+  font-size: 3rem;
+  display: inline-block;
+  animation: headtilt 2s ease-in-out infinite;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+}
+
+.mascot-right {
+  font-size: 3rem;
+  display: inline-block;
+  animation: snore 3s ease-in-out infinite;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+}
+
+@keyframes headtilt {
+  0%, 100% { transform: rotate(-8deg); }
+  50%       { transform: rotate(8deg); }
+}
+
+@keyframes snore {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-6px) scale(1.05); }
+}
+
+.hero-text-center {
+  text-align: center;
+  flex: 1;
+}
+
+.hero-text-center h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.6rem;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  transition: color 0.4s;
+}
+
+.hero-text-center p {
+  font-size: 0.88rem;
+  color: var(--subtext);
+  font-weight: 400;
+  transition: color 0.4s;
+}
+
+/* ══════════════════════════════════════════
+   FORM CARD
+══════════════════════════════════════════ */
+.card-wrap {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin-bottom: 24px;
+  border-top: 5px solid var(--accent);
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+
+/* ── Stepper overrides ── */
+::ng-deep .mat-stepper-horizontal {
+  background: transparent !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done {
+  background-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: var(--chip-border) !important;
+  color: var(--subtext) !important;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  border-top-color: var(--divider) !important;
+}
+
+::ng-deep .mat-step-label {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--subtext) !important;
+  font-size: 0.82rem !important;
+}
+
+::ng-deep .mat-step-label-selected {
+  color: var(--text) !important;
+}
+
+::ng-deep .mat-horizontal-content-container {
+  padding: 16px 24px 24px !important;
+}
+
+/* ── Input field overrides (light + dark) ── */
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: var(--input-bg) !important;
+  transition: background 0.4s !important;
+}
+
+::ng-deep .mdc-notched-outline__leading,
+::ng-deep .mdc-notched-outline__notch,
+::ng-deep .mdc-notched-outline__trailing {
+  border-color: var(--border) !important;
+  transition: border-color 0.3s !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--accent) !important;
+  border-width: 2px !important;
+}
+
+::ng-deep .mat-mdc-input-element {
+  color: var(--text) !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 0.95rem !important;
+}
+
+::ng-deep .mat-mdc-floating-label,
+::ng-deep .mdc-floating-label {
+  color: var(--label) !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+
+::ng-deep .mat-mdc-form-field-hint {
+  color: var(--subtext) !important;
+  font-size: 0.76rem !important;
+}
+
+::ng-deep .mat-mdc-form-field-error {
+  color: var(--error) !important;
+  font-size: 0.76rem !important;
+}
+
+::ng-deep .mat-mdc-select-value,
+::ng-deep .mat-mdc-select-arrow {
+  color: var(--text) !important;
+}
+
+/* ── Radio button overrides ── */
+::ng-deep .mat-mdc-radio-button .mdc-label {
+  color: var(--text) !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 600 !important;
+  padding-left: 6px !important;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-radio__outer-circle {
+  border-color: var(--border) !important;
+}
+
+::ng-deep .mat-mdc-radio-button.mat-warn.mat-mdc-radio-checked .mdc-radio__outer-circle {
+  border-color: var(--accent) !important;
+}
+
+::ng-deep .mat-mdc-radio-button.mat-warn.mat-mdc-radio-checked .mdc-radio__inner-circle {
+  background-color: var(--accent) !important;
+}
+
+/* ── Checkbox overrides ── */
+::ng-deep .mat-mdc-checkbox .mdc-label {
+  color: var(--text) !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+}
+
+::ng-deep .mat-mdc-checkbox.mat-warn .mdc-checkbox__background {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+::ng-deep .mat-mdc-checkbox:not(.mat-mdc-checkbox-checked) .mdc-checkbox__background {
+  border-color: var(--border) !important;
+  background-color: transparent !important;
+}
+
+/* ── Icon colors ── */
+::ng-deep .mat-mdc-form-field .mat-icon {
+  color: var(--label) !important;
+  transition: color 0.3s;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mat-icon {
+  color: var(--accent) !important;
+}
+
+/* ── Select panel ── */
+::ng-deep .mat-mdc-select-panel {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+::ng-deep .mat-mdc-option {
+  color: var(--text) !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+
+::ng-deep .mat-mdc-option:hover,
+::ng-deep .mat-mdc-option.mat-mdc-option-active {
+  background: var(--accent-soft) !important;
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item--selected {
+  background: var(--accent-soft) !important;
+  color: var(--accent-dark) !important;
+  font-weight: 700 !important;
+}
+
+/* ══════════════════════════════════════════
+   FORM LAYOUT
+══════════════════════════════════════════ */
+.step-form { display: flex; flex-direction: column; gap: 2px; }
+
+.form-row { margin-bottom: 6px; }
+
+.full-width { width: 100%; }
+
+.field-group { margin-bottom: 18px; }
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--label);
+  margin-bottom: 12px;
+  transition: color 0.4s;
+}
+
+.badge-pill {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+
+/* ── Radio row ── */
+.radio-row {
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.radio-inner {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════════
+   TYPE CHIPS
+══════════════════════════════════════════ */
+.type-chips {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.type-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 2px solid var(--chip-border);
+  border-radius: 14px;
+  background: var(--chip-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.type-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.type-chip.selected {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(230,168,23,0.4);
+  transform: translateY(-2px);
+}
+
+.type-chip[data-type="Water"].selected {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 4px 16px rgba(107,127,212,0.4);
+}
+
+.type-chip[data-type="Grass"].selected {
+  background: #5aaa60;
+  border-color: #5aaa60;
+  box-shadow: 0 4px 16px rgba(90,170,96,0.4);
+}
+
+.type-emoji { font-size: 1.2rem; }
+
+/* ══════════════════════════════════════════
+   BADGE CHIPS
+══════════════════════════════════════════ */
+.badge-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--chip-border);
+  border-radius: 10px;
+  background: var(--chip-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.badge-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.badge-chip.selected {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+/* ══════════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════════ */
+.divider {
+  margin: 16px 0 18px !important;
+  border-color: var(--divider) !important;
+}
+
+/* ══════════════════════════════════════════
+   CHECKBOX GROUP
+══════════════════════════════════════════ */
+.checkbox-group {
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+/* ══════════════════════════════════════════
+   STEP ACTIONS
+══════════════════════════════════════════ */
+.step-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 1px solid var(--divider);
+  gap: 12px;
+}
+
+.space-between { justify-content: space-between; }
+
+/* ── Button overrides ── */
+::ng-deep button.mat-mdc-raised-button.mat-warn {
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.3px !important;
+  padding: 0 22px !important;
+  height: 42px !important;
+  box-shadow: 0 3px 10px rgba(230,168,23,0.35) !important;
+  transition: all 0.2s !important;
+}
+
+::ng-deep button.mat-mdc-raised-button.mat-warn:hover {
+  background-color: var(--accent-dark) !important;
+  box-shadow: 0 6px 18px rgba(230,168,23,0.45) !important;
+  transform: translateY(-1px);
+}
+
+::ng-deep button.mat-mdc-outlined-button {
+  border-radius: 10px !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  height: 42px !important;
+  padding: 0 20px !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+/* ══════════════════════════════════════════
+   ERROR TEXT
+══════════════════════════════════════════ */
+.error-text {
+  color: var(--error);
+  font-size: 0.76rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* ══════════════════════════════════════════
+   RESULT CARD
+══════════════════════════════════════════ */
+.result-wrap {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-top: 5px solid var(--accent);
+  border-radius: 22px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.result-header {
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--blue-soft) 100%);
+  padding: 24px 28px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--divider);
+  transition: background 0.4s;
+}
+
+.result-mascots {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.result-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+  transition: color 0.4s;
+}
+
+.result-subtitle {
+  font-size: 0.9rem;
+  color: var(--subtext);
+  transition: color 0.4s;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0 28px;
+}
+
+.result-table tr { transition: background 0.15s; }
+
+.result-table tr:hover { background: var(--accent-soft); }
+
+.result-table td {
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text);
+  vertical-align: top;
+  transition: color 0.4s;
+}
+
+.result-table tr:last-child td { border-bottom: none; }
+
+.r-label {
+  color: var(--label) !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 34%;
+  padding-top: 14px !important;
+}
+
+/* ══════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }

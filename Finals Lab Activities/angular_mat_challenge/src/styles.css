@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Dark mode body background */
+body.dark-mode {
+  background: #0d0d0d !important;
+}
+
+/* Material overrides for dark mode */
+.dark .mat-mdc-card {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+}
+
+.dark .mat-mdc-form-field-focus-overlay {
+  background-color: #2a2a2a !important;
+}
+
+.dark .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.dark .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.dark .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: #333 !important;
+}
+
+.dark .mdc-text-field--outlined .mdc-floating-label,
+.dark .mdc-text-field--outlined .mdc-floating-label--float-above {
+  color: #888 !important;
+}
+
+.dark .mat-mdc-input-element {
+  color: #f0f0f0 !important;
+  caret-color: #ef5350 !important;
+}
+
+.dark .mat-mdc-select-value {
+  color: #f0f0f0 !important;
+}
+
+.dark .mat-mdc-select-arrow {
+  color: #888 !important;
+}
+
+.dark .mat-mdc-option {
+  background: #1e1e1e !important;
+  color: #f0f0f0 !important;
+}
+
+.dark .mat-mdc-option:hover {
+  background: #2a2a2a !important;
+}
+
+.dark .mat-mdc-radio-button .mdc-label {
+  color: #f0f0f0 !important;
+}
+
+.dark .mat-mdc-checkbox .mdc-label {
+  color: #f0f0f0 !important;
+}
+
+.dark .mat-step-label {
+  color: #888 !important;
+}
+
+.dark .mat-stepper-horizontal-line {
+  border-top-color: #333 !important;
+}
+
+.dark .mat-mdc-text-field-wrapper {
+  background-color: #222 !important;
+}
+
+.dark .mdc-text-field--filled {
+  background-color: #222 !important;
+}
