@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #060d18 !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  color: #ffffff;
+}
+
+.h1-blue {
+  -webkit-text-fill-color: transparent !important;
+  background: linear-gradient(135deg, #00d4ff, #00ffea) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}

@@ -1,0 +1,195 @@
+<div class="app">
+
+  <div class="bg-layer">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <img class="bg-rotom"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/479.png"
+      alt="" aria-hidden="true" />
+    <div class="bg-scanlines"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <img class="logo-img"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/479.png"
+          alt="Rotom" />
+        <div class="logo-name">POKÉ<span>DEX</span></div>
+      </div>
+
+      <div class="header-stats">
+        <div class="hstat hi">
+          <div class="hstat-n">{{ books.length }}</div>
+          <div class="hstat-l">CAUGHT</div>
+        </div>
+        <div class="hdiv"></div>
+        <div class="hstat">
+          <div class="hstat-n">893</div>
+          <div class="hstat-l">TOTAL</div>
+        </div>
+        <div class="hdiv"></div>
+        <div class="hstat">
+          <div class="hstat-n">18</div>
+          <div class="hstat-l">TYPES</div>
+        </div>
+      </div>
+
+      <div class="live">
+        <div class="live-dot"></div>
+        LIVE
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-kicker">✦ NATIONAL POKÉDEX — ROTOM EDITION ✦</div>
+      <h1 class="hero-h1">
+        <span class="h1-white">TRAINER</span>
+        <span class="h1-blue">MASTER</span>
+      </h1>
+      <div class="hero-sub">REGISTER · TRACK · BATTLE</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hstat2-n">{{ books.length }}</div>
+          <div class="hstat2-l">REGISTERED</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hstat2-n">{{ getMaxHp() }}</div>
+          <div class="hstat2-l">MAX HP</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hstat2-n">{{ getTypeCount() }}</div>
+          <div class="hstat2-l">TYPES SEEN</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="form-section">
+      <div class="form-card">
+        <div class="fc-head">
+          <img class="fc-rotom"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/479.png"
+            alt="Rotom" />
+          <div>
+            <div class="fc-eyebrow">ROTOM TERMINAL</div>
+            <div class="fc-title">ADD NEW <span>POKÉMON</span></div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="fg">
+            <div class="fg-lbl">NAME</div>
+            <input id="newBook" type="text" placeholder="e.g. Charizard" />
+          </div>
+          <div class="fg">
+            <div class="fg-lbl">TRAINER</div>
+            <input id="newAuthor" type="text" placeholder="e.g. Ash" />
+          </div>
+          <div class="fg">
+            <div class="fg-lbl">TYPE</div>
+            <div class="sel-wrap">
+              <select id="newGenre">
+                <option value="" disabled selected>Select type...</option>
+                <option value="fire">🔥 Fire</option>
+                <option value="water">💧 Water</option>
+                <option value="grass">🌿 Grass</option>
+                <option value="electric">⚡ Electric</option>
+                <option value="psychic">🔮 Psychic</option>
+                <option value="normal">⭐ Normal</option>
+                <option value="flying">🦅 Flying</option>
+                <option value="poison">☠️ Poison</option>
+                <option value="ground">🌍 Ground</option>
+                <option value="rock">🪨 Rock</option>
+                <option value="ice">❄️ Ice</option>
+                <option value="dragon">🐉 Dragon</option>
+                <option value="dark">🌑 Dark</option>
+                <option value="steel">⚙️ Steel</option>
+                <option value="fairy">🌸 Fairy</option>
+                <option value="fighting">🥊 Fighting</option>
+                <option value="bug">🐛 Bug</option>
+                <option value="ghost">👻 Ghost</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <div class="fg-lbl">POWER (HP)</div>
+            <input id="newPrice" type="number" placeholder="1–999" min="1" max="999" />
+          </div>
+          <div class="fg full">
+            <div class="fg-lbl">POKÉDEX ENTRY</div>
+            <input id="newDesc" type="text" placeholder="Describe its abilities..." />
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button class="reg-btn" (click)="addBook()">⊕ &nbsp; REGISTER POKÉMON</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEX LIST -->
+    <section class="dex-section">
+      <div class="dex-top">
+        <div class="dex-h">YOUR POKÉMON</div>
+        <div class="dex-badge" *ngIf="books.length > 0">{{ books.length }} CAUGHT</div>
+      </div>
+
+      <div class="empty-state" *ngIf="books.length === 0">
+        <img class="empty-img"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/479.png"
+          alt="Rotom" />
+        <div class="empty-txt">
+          HEY TRAINER! I'M ROTOM-DEX!<br>
+          REGISTER YOUR FIRST POKÉMON ABOVE!
+        </div>
+      </div>
+
+      <div class="cards-grid" *ngIf="books.length > 0">
+        <div class="poke-card t-{{ book.genre }}"
+          *ngFor="let book of books; let i = index"
+          [style.animation-delay]="i * 0.06 + 's'">
+
+          <div class="holo"></div>
+          <div class="c-bar"></div>
+
+          <div class="card-top">
+            <div class="c-no">#{{ book.id.toString().padStart(3,'0') }}</div>
+            <button class="c-del" (click)="deleteBook(book.id)">✕</button>
+          </div>
+
+          <div class="sprite-wrap">
+            <div class="sprite">{{ getSprite(book.genre) }}</div>
+            <div class="sprite-shad"></div>
+          </div>
+
+          <div class="card-body">
+            <div class="c-name">{{ book.title | uppercase }}</div>
+            <div class="c-trainer"><span>🎒</span>{{ book.author || 'Unknown Trainer' }}</div>
+            <div class="c-desc">{{ book.desc || 'No Pokédex data available.' }}</div>
+            <div class="c-foot">
+              <span class="type-tag" [ngStyle]="getTypePill(book.genre)">
+                {{ getSprite(book.genre) }} {{ book.genre }}
+              </span>
+              <div class="hp-row">
+                <span class="hp-l">HP</span>
+                <div class="hp-track">
+                  <div class="hp-fill"
+                    [style.width]="getHpPct(book.price)"
+                    [style.background]="getHpColor(book.price)">
+                  </div>
+                </div>
+                <span class="hp-v">{{ book.price }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
